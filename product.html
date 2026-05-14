@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Product Details - AL NOOR</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#0f0f0f;
+    color:white;
+    padding-top:100px;
+    overflow-x:hidden;
+}
+
+/* HEADER */
+
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 40px;
+    background:rgba(0,0,0,0.85);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+    border-bottom:1px solid #222;
+}
+
+.left-section{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.menu-icon{
+    font-size:24px;
+    cursor:pointer;
+    color:#d4af37;
+}
+
+.logo{
+    font-family:'Cinzel',serif;
+    font-size:30px;
+    color:#d4af37;
+    font-weight:700;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    margin-left:20px;
+    transition:0.3s;
+    font-weight:500;
+}
+
+.nav-links a:hover{
+    color:#d4af37;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    position:fixed;
+    left:-260px;
+    top:0;
+    width:250px;
+    height:100%;
+    background:#111;
+    padding-top:70px;
+    transition:0.3s;
+    z-index:2000;
+}
+
+.close-sidebar{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:22px;
+    color:white;
+    cursor:pointer;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    padding:18px;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.sidebar a:hover{
+    background:#d4af37;
+    color:black;
+}
+
+/* PRODUCT SECTION */
+
+.product-container{
+    width:90%;
+    margin:40px auto;
+    display:flex;
+    gap:40px;
+    background:#1a1a1a;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.4);
+}
+
+.product-image{
+    flex:1;
+}
+
+.product-image img{
+    width:100%;
+    border-radius:15px;
+    height:520px;
+    object-fit:cover;
+    transition:0.4s;
+}
+
+.product-image img:hover{
+    transform:scale(1.02);
+}
+
+.product-details{
+    flex:1;
+}
+
+.rating{
+    color:#d4af37;
+    margin-bottom:10px;
+    font-size:20px;
+}
+
+.product-details h1{
+    margin-bottom:15px;
+    font-size:42px;
+    color:#d4af37;
+    font-family:'Cinzel',serif;
+}
+
+.price{
+    margin:20px 0;
+    font-size:32px;
+    color:#d4af37;
+    font-weight:600;
+}
+
+.old-price{
+    text-decoration:line-through;
+    color:gray;
+    margin-left:10px;
+    font-size:22px;
+}
+
+.discount{
+    color:#00cc44;
+    margin-left:10px;
+    font-size:20px;
+    font-weight:600;
+}
+
+.description{
+    margin-top:25px;
+    line-height:1.9;
+    color:#ddd;
+    font-size:17px;
+}
+
+.stock{
+    margin-top:25px;
+    color:#00cc44;
+    font-weight:600;
+    font-size:20px;
+}
+
+.buttons{
+    margin-top:35px;
+    display:flex;
+    gap:20px;
+}
+
+button{
+    padding:15px 32px;
+    border:none;
+    cursor:pointer;
+    border-radius:10px;
+    font-size:16px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.cart-btn{
+    background:white;
+    color:black;
+}
+
+.buy-btn{
+    background:#d4af37;
+    color:black;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#d4af37;
+    color:black;
+    padding:14px 22px;
+    border-radius:10px;
+    font-weight:600;
+    opacity:0;
+    pointer-events:none;
+    transition:0.4s;
+    z-index:5000;
+}
+
+.toast.show{
+    opacity:1;
+}
+
+/* REVIEWS */
+
+.review-section{
+    width:90%;
+    margin:30px auto;
+    background:#1a1a1a;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.4);
+}
+
+.review-section h2{
+    color:#d4af37;
+    font-family:'Cinzel',serif;
+    margin-bottom:25px;
+    font-size:34px;
+}
+
+.review{
+    margin-top:20px;
+    padding-bottom:18px;
+    border-bottom:1px solid #333;
+}
+
+.review h4{
+    margin-bottom:8px;
+    color:#d4af37;
+}
+
+.review p{
+    color:#ccc;
+}
+
+/* FOOTER */
+
+.footer{
+    background:black;
+    text-align:center;
+    padding:35px 20px;
+    margin-top:80px;
+    border-top:1px solid #222;
+}
+
+.footer h3{
+    color:#d4af37;
+    margin-bottom:12px;
+    font-family:'Cinzel',serif;
+    font-size:28px;
+}
+
+.footer p{
+    color:#aaa;
+    font-size:15px;
+    margin-bottom:10px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .header{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .product-container{
+        flex-direction:column;
+        padding:20px;
+    }
+
+    .product-image img{
+        height:auto;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    .product-details h1{
+        font-size:32px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="toast" id="toast"></div>
+
+<!-- SIDEBAR -->
+
+<div id="sidebar" class="sidebar">
+
+    <div class="close-sidebar" onclick="closeMenu()">✖</div>
+
+    <a href="home.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="login.html">Sign In</a>
+
+</div>
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <div class="left-section">
+
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+        <div class="logo">AL NOOR</div>
+
+    </div>
+
+    <div class="nav-links">
+
+        <a href="home.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+
+    </div>
+
+</div>
+
+<!-- PRODUCT DETAILS -->
+
+<div class="product-container">
+
+    <div class="product-image">
+        <img id="productImg" src="">
+    </div>
+
+    <div class="product-details">
+
+        <div class="rating">★★★★★</div>
+
+        <h1 id="productName"></h1>
+
+        <div class="price">
+
+            ₹<span id="newPrice"></span>
+
+            <span class="old-price">
+                ₹<span id="oldPrice"></span>
+            </span>
+
+            <span class="discount" id="discount"></span>
+
+        </div>
+
+        <div class="description">
+
+            This premium jewellery piece is crafted with elegant design and high-quality materials.
+            Perfect for weddings, parties, traditional events, and luxury fashion styling.
+            AL NOOR Jewellery provides timeless beauty with modern craftsmanship.
+
+        </div>
+
+        <div class="stock">
+            ✔ In Stock
+        </div>
+
+        <div class="buttons">
+
+            <button class="cart-btn" onclick="addToCart()">
+                Add To Cart
+            </button>
+
+            <button class="buy-btn" onclick="buyNow()">
+                Buy Now
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- REVIEWS -->
+
+<div class="review-section">
+
+    <h2>Customer Reviews</h2>
+
+    <div class="review">
+
+        <h4>⭐⭐⭐⭐⭐ Ayesha</h4>
+
+        <p>
+            Beautiful design and excellent finishing.
+        </p>
+
+    </div>
+
+    <div class="review">
+
+        <h4>⭐⭐⭐⭐⭐ Zoya</h4>
+
+        <p>
+            Looks premium and delivery was fast.
+        </p>
+
+    </div>
+
+    <div class="review">
+
+        <h4>⭐⭐⭐⭐ Arfa</h4>
+
+        <p>
+            Worth the price. Very elegant jewellery.
+        </p>
+
+    </div>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+    <h3>AL NOOR Jewellery</h3>
+
+    <p>
+        Luxury Jewellery | Elegant Designs | Premium Collection
+    </p>
+
+    <p>
+        © 2026 AL NOOR. All Rights Reserved.
+    </p>
+
+</div>
+
+<script>
+
+/* SIDEBAR */
+
+function toggleMenu(){
+
+    let s=document.getElementById("sidebar");
+
+    s.style.left = s.style.left==="0px" ? "-260px" : "0px";
+}
+
+function closeMenu(){
+
+    document.getElementById("sidebar").style.left="-260px";
+}
+
+/* TOAST */
+
+function showToast(message){
+
+    let toast = document.getElementById("toast");
+
+    toast.innerText = message;
+
+    toast.classList.add("show");
+
+    setTimeout(()=>{
+        toast.classList.remove("show");
+    },2000);
+}
+
+/* PRODUCTS */
+
+const products = [
+
+{
+    name:"Ruby Choker Set",
+    price:1500,
+    oldPrice:3500,
+    image:"images/ruby.jpg"
+},
+
+{
+    name:"Antique Gold Necklace",
+    price:1800,
+    oldPrice:4200,
+    image:"images/antique.jpg"
+},
+
+{
+    name:"Kundan Jhumka",
+    price:750,
+    oldPrice:1600,
+    image:"images/jhumka.jpg"
+},
+
+{
+    name:"Stone Stud Earrings",
+    price:500,
+    oldPrice:1200,
+    image:"images/stud.jpg"
+},
+
+{
+    name:"Gold Kada Bracelet",
+    price:1100,
+    oldPrice:2500,
+    image:"images/kada.jpg"
+},
+
+{
+    name:"Charm Bracelet",
+    price:850,
+    oldPrice:2000,
+    image:"images/charm.jpg"
+},
+
+{
+    name:"Heart Pendant Chain",
+    price:600,
+    oldPrice:1400,
+    image:"images/heart.jpg"
+},
+
+{
+    name:"Infinity Pendant",
+    price:550,
+    oldPrice:1300,
+    image:"images/infinity.jpg"
+},
+
+{
+    name:"Emerald Necklace",
+    price:1200,
+    oldPrice:3500,
+    image:"images/emerald.jpg"
+},
+
+{
+    name:"Pearl Chain",
+    price:1100,
+    oldPrice:2400,
+    image:"images/pearlchain.jpg"
+},
+
+{
+    name:"Diamond Studs",
+    price:800,
+    oldPrice:1800,
+    image:"images/diamondstud.jpg"
+},
+
+{
+    name:"Jhumka Earrings",
+    price:700,
+    oldPrice:1500,
+    image:"images/jhumka2.jpg"
+},
+
+{
+    name:"Silver Anklet",
+    price:500,
+    oldPrice:1200,
+    image:"images/anklet2.jpg"
+},
+
+{
+    name:"Bangle Set",
+    price:1300,
+    oldPrice:2800,
+    image:"images/bangleset.jpg"
+},
+
+{
+    name:"Gold Pendant",
+    price:900,
+    oldPrice:2000,
+    image:"images/goldpendant.jpg"
+},
+
+{
+    name:"Simple Pendant",
+    price:400,
+    oldPrice:900,
+    image:"images/simplependant.jpg"
+}
+
+];
+
+/* GET PRODUCT FROM LOCAL STORAGE */
+
+let product = JSON.parse(localStorage.getItem("selectedProduct"));
+
+/* LOAD PRODUCT */
+
+if(product){
+
+    document.getElementById("productName").innerText = product.name;
+
+    document.getElementById("newPrice").innerText = product.price;
+
+    document.getElementById("oldPrice").innerText = product.oldPrice;
+
+    document.getElementById("productImg").src = product.image;
+
+    let discount = Math.round(
+    ((product.oldPrice - product.price) / product.oldPrice) * 100
+    );
+
+    document.getElementById("discount").innerText =
+    "(" + discount + "% OFF)";
+
+}
+else{
+
+    document.getElementById("productName").innerText = "Product Not Found";
+
+    document.getElementById("productImg").src =
+    "images/default.jpg";
+
+}
+
+/* ADD TO CART */
+
+function addToCart(){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    let existing = cart.find(item => item.name === product.name);
+
+    if(existing){
+
+        existing.quantity += 1;
+
+    }else{
+
+        cart.push({
+            name:product.name,
+            price:product.price,
+            quantity:1
+        });
+
+    }
+
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+    showToast("Added To Cart");
+}
+
+/* BUY NOW */
+
+function buyNow(){
+
+    addToCart();
+
+    window.location.href = "checkout.html";
+}
+
+</script>
+
+</body>
+</html>

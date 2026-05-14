@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Product Details - Al Noor</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+}
+
+/* HEADER */
+
+.header{
+    background:#111;
+    color:white;
+    padding:18px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:600;
+}
+
+.nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+}
+
+/* PRODUCT SECTION */
+
+.product-container{
+    width:90%;
+    margin:40px auto;
+    display:flex;
+    gap:40px;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* IMAGE */
+
+.product-image{
+    flex:1;
+}
+
+.product-image img{
+    width:100%;
+    border-radius:10px;
+    height:500px;
+    object-fit:cover;
+}
+
+/* DETAILS */
+
+.product-details{
+    flex:1;
+}
+
+.product-details h1{
+    margin-bottom:15px;
+    font-size:34px;
+}
+
+.price{
+    margin:20px 0;
+    font-size:28px;
+    color:#b8962e;
+}
+
+.old-price{
+    text-decoration:line-through;
+    color:gray;
+    margin-left:10px;
+    font-size:20px;
+}
+
+.discount{
+    color:green;
+    margin-left:10px;
+    font-size:20px;
+}
+
+.description{
+    margin-top:20px;
+    line-height:1.8;
+    color:#555;
+}
+
+.stock{
+    margin-top:20px;
+    color:green;
+    font-weight:600;
+}
+
+/* BUTTONS */
+
+.buttons{
+    margin-top:30px;
+    display:flex;
+    gap:20px;
+}
+
+button{
+    padding:14px 30px;
+    border:none;
+    cursor:pointer;
+    border-radius:8px;
+    font-size:16px;
+}
+
+.cart-btn{
+    background:#111;
+    color:white;
+}
+
+.buy-btn{
+    background:#b8962e;
+    color:white;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+/* REVIEWS */
+
+.review-section{
+    width:90%;
+    margin:30px auto;
+    background:white;
+    padding:25px;
+    border-radius:10px;
+}
+
+.review{
+    margin-top:20px;
+    padding-bottom:15px;
+    border-bottom:1px solid #ddd;
+}
+
+.review h4{
+    margin-bottom:5px;
+}
+
+@media(max-width:900px){
+
+    .product-container{
+        flex-direction:column;
+    }
+
+    .product-image img{
+        height:auto;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <div class="logo">AL NOOR</div>
+
+    <div class="nav">
+        <a href="home.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+    </div>
+
+</div>
+
+<!-- PRODUCT DETAILS -->
+
+<div class="product-container">
+
+    <!-- IMAGE -->
+
+    <div class="product-image">
+        <img id="productImg" src="">
+    </div>
+
+    <!-- DETAILS -->
+
+    <div class="product-details">
+
+        <h1 id="productName"></h1>
+
+        <div class="price">
+            ₹<span id="newPrice"></span>
+
+            <span class="old-price">
+                ₹<span id="oldPrice"></span>
+            </span>
+
+            <span class="discount" id="discount"></span>
+        </div>
+
+        <div class="description">
+            This premium jewellery piece is crafted with elegant design and high-quality materials.
+            Perfect for weddings, parties, traditional events, and luxury fashion styling.
+            Al Noor Jewellery provides timeless beauty with modern craftsmanship.
+        </div>
+
+        <div class="stock">
+            ✔ In Stock
+        </div>
+
+        <div class="buttons">
+
+            <button class="cart-btn" onclick="addToCart()">
+                Add To Cart
+            </button>
+
+            <button class="buy-btn" onclick="buyNow()">
+                Buy Now
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- REVIEWS -->
+
+<div class="review-section">
+
+    <h2>Customer Reviews</h2>
+
+    <div class="review">
+        <h4>⭐⭐⭐⭐⭐ Ayesha</h4>
+        <p>Beautiful design and excellent finishing.</p>
+    </div>
+
+    <div class="review">
+        <h4>⭐⭐⭐⭐⭐ Zoya</h4>
+        <p>Looks premium and delivery was fast.</p>
+    </div>
+
+    <div class="review">
+        <h4>⭐⭐⭐⭐ Arfa</h4>
+        <p>Worth the price. Very elegant jewellery.</p>
+    </div>
+
+</div>
+
+<script>
+
+/* PRODUCTS */
+
+const products = [
+
+{
+    name:"Ruby Choker Set",
+    price:1500,
+    oldPrice:3500,
+    image:"images/Necklace/ruby.jpg"
+},
+
+{
+    name:"Antique Gold Necklace",
+    price:1800,
+    oldPrice:4200,
+    image:"images/Necklace/antique.jpg"
+},
+
+{
+    name:"Polki Bridal Set",
+    price:2600,
+    oldPrice:6000,
+    image:"images/Necklace/polki.jpg"
+}
+
+];
+
+/* GET URL */
+
+let params = new URLSearchParams(window.location.search);
+
+let id = params.get("id");
+
+/* LOAD PRODUCT */
+
+let product = products[id];
+
+document.getElementById("productName").innerText = product.name;
+
+document.getElementById("newPrice").innerText = product.price;
+
+document.getElementById("oldPrice").innerText = product.oldPrice;
+
+document.getElementById("productImg").src = product.image;
+
+/* DISCOUNT */
+
+let discount = Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100);
+
+document.getElementById("discount").innerText = "(" + discount + "% OFF)";
+
+/* ADD TO CART */
+
+function addToCart(){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    cart.push({
+        name:product.name,
+        price:product.price
+    });
+
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+    alert("Added To Cart");
+}
+
+/* BUY NOW */
+
+function buyNow(){
+
+    alert("Proceeding To Checkout");
+
+    window.location.href = "checkout.html";
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Us - AL NOOR Jewellery</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#0f0f0f;
+    color:white;
+    padding-top:100px;
+}
+
+/* HEADER */
+
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 40px;
+    background:rgba(0,0,0,0.85);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+}
+
+.left-section{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.menu-icon{
+    font-size:24px;
+    cursor:pointer;
+    color:#d4af37;
+}
+
+.logo{
+    font-family:'Cinzel',serif;
+    font-size:30px;
+    color:#d4af37;
+    font-weight:700;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    margin-left:20px;
+    transition:0.3s;
+}
+
+.nav-links a:hover{
+    color:#d4af37;
+}
+
+.icons span{
+    margin-left:15px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    position:fixed;
+    left:-250px;
+    top:0;
+    width:250px;
+    height:100%;
+    background:#111;
+    padding-top:70px;
+    transition:0.3s;
+    z-index:2000;
+}
+
+.close-sidebar{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:22px;
+    color:white;
+    cursor:pointer;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    padding:18px;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.sidebar a:hover{
+    background:#d4af37;
+    color:black;
+}
+
+/* MAIN */
+
+.container{
+    width:90%;
+    margin:auto;
+}
+
+.page-title{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.page-title h1{
+    color:#d4af37;
+    font-size:50px;
+    font-family:'Cinzel',serif;
+    margin-bottom:15px;
+}
+
+.page-title p{
+    color:#ccc;
+    max-width:800px;
+    margin:auto;
+    line-height:1.8;
+    font-size:17px;
+}
+
+.section{
+    margin-top:60px;
+}
+
+.section h2{
+    color:#d4af37;
+    font-size:34px;
+    font-family:'Cinzel',serif;
+    margin-bottom:20px;
+    border-bottom:1px solid #333;
+    padding-bottom:10px;
+}
+
+.section p{
+    color:#ddd;
+    line-height:1.9;
+    margin-bottom:20px;
+    font-size:16px;
+}
+
+/* CARDS */
+
+.types{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:#1a1a1a;
+    padding:25px;
+    border-radius:15px;
+    transition:0.4s;
+    box-shadow:0 5px 15px rgba(0,0,0,0.4);
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 10px 25px rgba(212,175,55,0.3);
+}
+
+.card h3{
+    color:#d4af37;
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.card p{
+    color:#ccc;
+    line-height:1.7;
+}
+
+/* BACK BUTTON */
+
+.back{
+    display:inline-block;
+    margin-top:40px;
+    margin-bottom:30px;
+    text-decoration:none;
+    background:#d4af37;
+    color:black;
+    padding:12px 25px;
+    border-radius:30px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.back:hover{
+    background:white;
+}
+
+/* FOOTER */
+
+.footer{
+    background:black;
+    text-align:center;
+    padding:35px 20px;
+    margin-top:80px;
+    border-top:1px solid #222;
+}
+
+.footer h3{
+    color:#d4af37;
+    margin-bottom:12px;
+    font-family:'Cinzel',serif;
+    font-size:28px;
+}
+
+.footer p{
+    color:#aaa;
+    font-size:15px;
+    margin-bottom:10px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .header{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .page-title h1{
+        font-size:38px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div id="sidebar" class="sidebar">
+
+    <div class="close-sidebar" onclick="closeMenu()">✖</div>
+
+    <a href="home.html">Home</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About</a>
+    <a href="login.html">Sign In</a>
+
+</div>
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <div class="left-section">
+
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+        <div class="logo">AL NOOR</div>
+
+    </div>
+
+    <div class="nav-links">
+
+        <a href="home.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="login.html">Sign In</a>
+
+    </div>
+
+    <div class="icons">
+
+        <span>❤️</span>
+        <span>🛒</span>
+
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="container">
+
+    <div class="page-title">
+
+        <h1>About AL NOOR Jewellery</h1>
+
+        <p>
+            Discover timeless beauty, elegant craftsmanship, and premium jewellery collections designed for every special moment.
+        </p>
+
+    </div>
+
+    <!-- COMPANY -->
+
+    <div class="section">
+
+        <h2>Our Company</h2>
+
+        <p>
+            AL NOOR Jewellery is a premium jewellery brand dedicated to creating elegant, luxurious, and affordable jewellery collections for modern fashion lovers. Our designs combine traditional craftsmanship with contemporary beauty to create timeless jewellery pieces.
+        </p>
+
+        <p>
+            We focus on quality, customer satisfaction, and elegant craftsmanship. Every jewellery piece is designed carefully to provide beauty, confidence, and sophistication for every occasion.
+        </p>
+
+    </div>
+
+    <!-- ABOUT JEWELLERY -->
+
+    <div class="section">
+
+        <h2>About Jewellery</h2>
+
+        <p>
+            Jewellery has always represented beauty, culture, tradition, and luxury. From ancient civilizations to modern fashion, jewellery continues to be an important part of celebrations, weddings, and personal style.
+        </p>
+
+        <p>
+            Modern jewellery combines traditional art with stylish contemporary designs using gold, silver, diamonds, pearls, gemstones, and premium materials.
+        </p>
+
+    </div>
+
+    <!-- TYPES -->
+
+    <div class="section">
+
+        <h2>Types of Jewellery</h2>
+
+        <div class="types">
+
+            <div class="card">
+
+                <h3>Necklaces</h3>
+
+                <p>
+                    Elegant neck jewellery available in chains, chokers, bridal sets, and luxury layered styles.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Earrings</h3>
+
+                <p>
+                    Stylish earrings including studs, hoops, jhumkas, chandbalis, and modern designer collections.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Bracelets</h3>
+
+                <p>
+                    Beautiful wrist accessories designed for daily wear, weddings, and premium fashion styling.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Pendants</h3>
+
+                <p>
+                    Minimal and elegant pendants crafted with modern and traditional artistic designs.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Luxury Collections</h3>
+
+                <p>
+                    Premium jewellery collections crafted with elegant finishing and luxurious materials.
+                </p>
+
+            </div>
+
+            <div class="card">
+
+                <h3>Wedding Jewellery</h3>
+
+                <p>
+                    Bridal jewellery collections designed specially for weddings, celebrations, and grand occasions.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- WHY CHOOSE -->
+
+    <div class="section">
+
+        <h2>Why Choose AL NOOR?</h2>
+
+        <p>
+            ✔ Premium Quality Jewellery<br><br>
+
+            ✔ Elegant Traditional & Modern Designs<br><br>
+
+            ✔ Affordable Luxury Collections<br><br>
+
+            ✔ Trusted Customer Service<br><br>
+
+            ✔ Stylish Jewellery For Every Occasion
+        </p>
+
+    </div>
+
+    <a href="home.html" class="back">← Back to Home</a>
+
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+    <h3>AL NOOR Jewellery</h3>
+
+    <p>
+        Luxury Jewellery | Elegant Designs | Premium Collection
+    </p>
+
+    <p>
+        © 2026 AL NOOR. All Rights Reserved.
+    </p>
+
+</div>
+
+<script>
+
+function toggleMenu(){
+
+    let s=document.getElementById("sidebar");
+
+    s.style.left = s.style.left==="0px" ? "-250px" : "0px";
+}
+
+function closeMenu(){
+
+    document.getElementById("sidebar").style.left="-250px";
+}
+
+</script>
+
+</body>
+</html>

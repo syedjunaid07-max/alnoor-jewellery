@@ -1,0 +1,1012 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AL NOOR Jewellery</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#0f0f0f;
+    color:white;
+    overflow-x:hidden;
+}
+
+body::-webkit-scrollbar{
+    width:8px;
+}
+
+body::-webkit-scrollbar-thumb{
+    background:#d4af37;
+    border-radius:10px;
+}
+
+/* HEADER */
+
+.header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 40px;
+    background:rgba(0,0,0,0.85);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+    border-bottom:1px solid #222;
+}
+
+.left-section{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.menu-icon{
+    font-size:24px;
+    cursor:pointer;
+    color:#d4af37;
+}
+
+.logo{
+    font-family:'Cinzel',serif;
+    font-size:30px;
+    color:#d4af37;
+    font-weight:700;
+}
+
+.search-box{
+    padding:12px 16px;
+    border:none;
+    border-radius:30px;
+    width:230px;
+    outline:none;
+    background:#1d1d1d;
+    color:white;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:white;
+    margin-left:20px;
+    transition:0.3s;
+    font-weight:500;
+}
+
+.nav-links a:hover{
+    color:#d4af37;
+}
+
+.icons span{
+    margin-left:15px;
+    cursor:pointer;
+    font-size:18px;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    position:fixed;
+    left:-260px;
+    top:0;
+    width:250px;
+    height:100%;
+    background:#111;
+    padding-top:70px;
+    transition:0.3s;
+    z-index:2000;
+}
+
+.close-sidebar{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:22px;
+    color:white;
+    cursor:pointer;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    padding:18px;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.sidebar a:hover{
+    background:#d4af37;
+    color:black;
+}
+
+/* HERO */
+
+.hero{
+    height:100vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)),
+    url('https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?q=80&w=1400&auto=format&fit=crop');
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    padding:20px;
+}
+
+.hero-content{
+    animation:fadeIn 1s ease;
+}
+
+.hero-content h1{
+    font-size:65px;
+    color:#d4af37;
+    font-family:'Cinzel',serif;
+    margin-bottom:20px;
+}
+
+.hero-content p{
+    font-size:20px;
+    max-width:700px;
+    line-height:1.8;
+    margin:auto;
+    margin-bottom:30px;
+    color:#ddd;
+}
+
+.hero-btn{
+    padding:14px 35px;
+    background:#d4af37;
+    color:black;
+    border:none;
+    border-radius:30px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+    font-weight:600;
+}
+
+.hero-btn:hover{
+    background:white;
+    transform:scale(1.05);
+}
+
+/* PRODUCTS */
+
+.container{
+    width:90%;
+    margin:80px auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    color:#d4af37;
+    font-size:42px;
+    font-family:'Cinzel',serif;
+}
+
+.section-title p{
+    color:#bbb;
+    margin-top:15px;
+    line-height:1.8;
+}
+
+.category-title{
+    color:#d4af37;
+    font-size:36px;
+    font-family:'Cinzel',serif;
+    margin-top:60px;
+    margin-bottom:25px;
+    border-bottom:1px solid #333;
+    padding-bottom:10px;
+}
+
+.products{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.card{
+    background:#1a1a1a;
+    border-radius:18px;
+    overflow:hidden;
+    transition:0.4s;
+    box-shadow:0 5px 15px rgba(0,0,0,0.4);
+    position:relative;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 10px 25px rgba(212,175,55,0.3);
+}
+
+.card img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+    transition:0.4s;
+}
+
+.card:hover img{
+    transform:scale(1.05);
+}
+
+.card-content{
+    padding:20px;
+}
+
+.rating{
+    color:#d4af37;
+    margin-bottom:10px;
+}
+
+.card-content h3{
+    margin-bottom:10px;
+}
+
+.price{
+    color:#d4af37;
+    margin-bottom:15px;
+    font-size:18px;
+}
+
+.old-price{
+    text-decoration:line-through;
+    color:gray;
+    margin-left:10px;
+}
+
+.discount{
+    color:#00cc44;
+    margin-left:8px;
+    font-weight:600;
+}
+
+.card-buttons{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.card-buttons button{
+    padding:10px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.card-buttons button:hover{
+    transform:scale(1.03);
+}
+
+.heart-btn{
+    width:40px;
+    height:40px;
+    background:white;
+    color:black;
+    font-size:18px;
+    border:1px solid #ddd;
+    padding:0;
+}
+
+.cart-btn{
+    flex:1;
+    background:#d4af37;
+    color:black;
+}
+
+.details-btn{
+    flex:1;
+    background:white;
+    color:black;
+}
+
+/* CART PANEL */
+
+.cart-panel{
+    position:fixed;
+    right:-380px;
+    top:0;
+    width:360px;
+    height:100%;
+    background:#1a1a1a;
+    padding:20px;
+    transition:0.3s;
+    overflow-y:auto;
+    z-index:3000;
+    border-left:1px solid #333;
+}
+
+.cart-panel h3{
+    color:#d4af37;
+}
+
+.cart-item{
+    margin:20px 0;
+    border-bottom:1px solid #333;
+    padding-bottom:15px;
+}
+
+.cart-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.qty-box{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-top:10px;
+}
+
+.qty-btn{
+    width:28px;
+    height:28px;
+    border:none;
+    background:#d4af37;
+    color:black;
+    cursor:pointer;
+    border-radius:5px;
+    font-weight:600;
+}
+
+.remove-btn{
+    background:red;
+    color:white;
+    border:none;
+    padding:5px 10px;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+.total-box{
+    margin-top:20px;
+    font-size:22px;
+    color:#d4af37;
+    font-weight:600;
+}
+
+.checkout-btn{
+    width:100%;
+    margin-top:20px;
+    padding:14px;
+    background:#d4af37;
+    border:none;
+    border-radius:10px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#d4af37;
+    color:black;
+    padding:14px 22px;
+    border-radius:10px;
+    font-weight:600;
+    opacity:0;
+    pointer-events:none;
+    transition:0.4s;
+    z-index:5000;
+}
+
+.toast.show{
+    opacity:1;
+}
+
+/* FOOTER */
+
+.footer{
+    background:black;
+    text-align:center;
+    padding:40px 20px;
+    margin-top:80px;
+    border-top:1px solid #222;
+}
+
+.footer h3{
+    color:#d4af37;
+    margin-bottom:10px;
+    font-family:'Cinzel',serif;
+    font-size:30px;
+}
+
+.footer p{
+    color:#aaa;
+    margin-top:10px;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .header{
+        flex-direction:column;
+        gap:15px;
+        padding:15px;
+    }
+
+    .hero-content h1{
+        font-size:42px;
+    }
+
+    .hero-content p{
+        font-size:16px;
+    }
+
+    .search-box{
+        width:180px;
+    }
+
+    .nav-links{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .cart-panel{
+        width:100%;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="toast" id="toast"></div>
+
+<div id="sidebar" class="sidebar">
+
+    <div class="close-sidebar" onclick="closeMenu()">✖</div>
+
+    <a href="#" onclick="filterCategory('all')">All</a>
+    <a href="#productsSection" onclick="filterCategory('Necklace')">Necklace</a>
+    <a href="#productsSection" onclick="filterCategory('Earrings')">Earrings</a>
+    <a href="#productsSection" onclick="filterCategory('Bracelet')">Bracelet</a>
+    <a href="#productsSection" onclick="filterCategory('Pendants')">Pendants</a>
+
+</div>
+
+<div class="header">
+
+    <div class="left-section">
+
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+        <div class="logo">AL NOOR</div>
+
+        <input type="text"
+        placeholder="Search..."
+        class="search-box"
+        onkeyup="searchProduct(this.value)">
+
+    </div>
+
+    <div class="nav-links">
+
+        <a href="home.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="login.html">Sign In</a>
+        <a href="about.html">About</a>
+
+    </div>
+
+    <div class="icons">
+
+        <span onclick="toggleWish()">
+            ❤️ <span id="wishCount">0</span>
+        </span>
+
+        <span onclick="toggleCart()">
+            🛒 <span id="cartCount">0</span>
+        </span>
+
+    </div>
+
+</div>
+
+<div class="hero">
+
+    <div class="hero-content">
+
+        <h1>Luxury Jewellery Collection</h1>
+
+        <p>
+            Discover timeless elegance crafted with perfection.
+            Premium jewellery designs for weddings and celebrations.
+        </p>
+
+        <button class="hero-btn"
+        onclick="window.location.href='shop.html'">
+
+        Shop Now
+
+        </button>
+
+    </div>
+
+</div>
+
+<div class="container" id="productsSection">
+
+    <div class="section-title">
+        <h2>Featured Collection</h2>
+        <p>Elegant handcrafted jewellery collections with luxury designs and premium finishing.</p>
+    </div>
+
+    <div id="productList"></div>
+
+</div>
+
+<div id="cartPanel" class="cart-panel">
+
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+
+        <h3>Shopping Cart</h3>
+
+        <span style="cursor:pointer;font-size:22px;" onclick="toggleCart()">✖</span>
+
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div class="total-box">
+        Total: ₹<span id="totalPrice">0</span>
+    </div>
+
+    <button class="checkout-btn" onclick="goCheckout()">
+        Proceed To Checkout
+    </button>
+
+</div>
+
+<div id="wishPanel" class="cart-panel">
+
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+
+        <h3>Wishlist</h3>
+
+        <span style="cursor:pointer;font-size:22px;" onclick="toggleWish()">✖</span>
+
+    </div>
+
+    <div id="wishItems"></div>
+
+</div>
+
+<div class="footer">
+
+    <h3>AL NOOR Jewellery</h3>
+
+    <p>Luxury Jewellery | Premium Collection | Elegant Designs</p>
+
+    <p>© 2026 AL NOOR. All Rights Reserved.</p>
+
+</div>
+
+<script>
+
+const products = [
+
+    ["Ruby Choker Set",1500,3500,"Necklace","images/ruby.jpg"],
+    ["Antique Gold Necklace",1800,4200,"Necklace","images/antique.jpg"],
+
+    ["Kundan Jhumka",750,1600,"Earrings","images/jhumka.jpg"],
+    ["Stone Stud Earrings",500,1200,"Earrings","images/stud.jpg"],
+
+    ["Gold Kada Bracelet",1100,2500,"Bracelet","images/kada.jpg"],
+    ["Charm Bracelet",850,2000,"Bracelet","images/charm.jpg"],
+
+    ["Heart Pendant Chain",600,1400,"Pendants","images/heart.jpg"],
+    ["Infinity Pendant",550,1300,"Pendants","images/infinity.jpg"]
+
+];
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+
+function showToast(message){
+
+    let toast = document.getElementById("toast");
+
+    toast.innerText = message;
+
+    toast.classList.add("show");
+
+    setTimeout(()=>{
+        toast.classList.remove("show");
+    },2000);
+}
+
+function displayProducts(list){
+
+    let container = document.getElementById("productList");
+
+    container.innerHTML = "";
+
+    let categories = ["Necklace","Earrings","Bracelet","Pendants"];
+
+    categories.forEach(category=>{
+
+        let filtered = list.filter(p=>p[3]===category);
+
+        if(filtered.length > 0){
+
+            container.innerHTML += `
+
+            <div class="category-title">
+                ${category}
+            </div>
+
+            <div class="products">
+
+            ${filtered.map((p)=>{
+
+                // ✅ FIX: Get real index from original products array
+                // so Details always opens the correct product
+                let realIndex = products.indexOf(p);
+
+                let discount = Math.floor(((p[2]-p[1])/p[2])*100);
+
+                return `
+
+                <div class="card">
+
+                    <img src="${p[4]}">
+
+                    <div class="card-content">
+
+                        <div class="rating">★★★★★</div>
+
+                        <h3>${p[0]}</h3>
+
+                        <div class="price">
+
+                            ₹${p[1]}
+                            <span class="old-price">₹${p[2]}</span>
+                            <span class="discount">(${discount}% OFF)</span>
+
+                        </div>
+
+                        <div class="card-buttons">
+
+                            <button class="heart-btn"
+                            onclick="addToWish('${p[0]}')">
+
+                            ❤️
+
+                            </button>
+
+                            <button class="cart-btn"
+                            onclick="addToCart('${p[0]}',${p[1]})">
+
+                            Cart
+
+                            </button>
+
+                            <button class="details-btn"
+                            onclick="openProduct(${realIndex})">
+
+                            Details
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                `;
+
+            }).join("")}
+
+            </div>
+
+            `;
+
+        }
+
+    });
+
+}
+
+function openProduct(index){
+
+    let selectedProduct = {
+
+        name: products[index][0],
+        price: products[index][1],
+        oldPrice: products[index][2],
+        category: products[index][3],
+        image: products[index][4]
+
+    };
+
+    localStorage.setItem(
+        "selectedProduct",
+        JSON.stringify(selectedProduct)
+    );
+
+    window.location.href = "product.html";
+}
+
+displayProducts(products);
+
+function searchProduct(val){
+
+    let filtered = products.filter(p =>
+        p[0].toLowerCase().includes(val.toLowerCase())
+    );
+
+    displayProducts(filtered);
+}
+
+function filterCategory(category){
+
+    if(category==="all"){
+        displayProducts(products);
+    }
+    else{
+        let filtered = products.filter(p=>p[3]===category);
+        displayProducts(filtered);
+    }
+
+    closeMenu();
+}
+
+function toggleMenu(){
+
+    let s=document.getElementById("sidebar");
+
+    s.style.left = s.style.left==="0px" ? "-260px" : "0px";
+}
+
+function closeMenu(){
+
+    document.getElementById("sidebar").style.left="-260px";
+}
+
+function addToCart(name,price){
+
+    let existing = cart.find(item=>item.name===name);
+
+    if(existing){
+        existing.quantity += 1;
+    }
+    else{
+        cart.push({name,price,quantity:1});
+    }
+
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+    loadCart();
+
+    showToast("Added To Cart");
+}
+
+function addToWish(name){
+
+    if(!wishlist.includes(name)){
+
+        wishlist.push(name);
+
+        localStorage.setItem("wishlist",JSON.stringify(wishlist));
+
+        loadWishlist();
+
+        showToast("Added To Wishlist");
+
+    }
+    else{
+        showToast("Already In Wishlist");
+    }
+}
+
+function loadCart(){
+
+    let c=document.getElementById("cartItems");
+
+    c.innerHTML="";
+
+    let total = 0;
+
+    cart.forEach((item,i)=>{
+
+        total += item.price * item.quantity;
+
+        c.innerHTML += `
+
+        <div class="cart-item">
+
+            <div class="cart-top">
+
+                <div>
+                    <strong>${item.name}</strong><br>
+                    ₹${item.price}
+                </div>
+
+                <button class="remove-btn"
+                onclick="removeCartItem(${i})">
+
+                ❌
+
+                </button>
+
+            </div>
+
+            <div class="qty-box">
+
+                <button class="qty-btn" onclick="decreaseQty(${i})">-</button>
+
+                <span>${item.quantity}</span>
+
+                <button class="qty-btn" onclick="increaseQty(${i})">+</button>
+
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+    document.getElementById("cartCount").innerText = cart.length;
+
+    document.getElementById("totalPrice").innerText = total;
+}
+
+function increaseQty(index){
+
+    cart[index].quantity++;
+
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+    loadCart();
+}
+
+function decreaseQty(index){
+
+    if(cart[index].quantity > 1){
+        cart[index].quantity--;
+    }
+    else{
+        cart.splice(index,1);
+    }
+
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+    loadCart();
+}
+
+function loadWishlist(){
+
+    let w=document.getElementById("wishItems");
+
+    w.innerHTML="";
+
+    wishlist.forEach((item,i)=>{
+
+        w.innerHTML += `
+
+        <div class="cart-item">
+
+            <div class="cart-top">
+                <strong>${item}</strong>
+
+                <button class="remove-btn"
+                onclick="removeWishItem(${i})">
+
+                ❌
+
+                </button>
+            </div>
+
+        </div>
+
+        `;
+
+    });
+
+    document.getElementById("wishCount").innerText = wishlist.length;
+}
+
+function removeCartItem(index){
+
+    cart.splice(index,1);
+
+    localStorage.setItem("cart",JSON.stringify(cart));
+
+    loadCart();
+}
+
+function removeWishItem(index){
+
+    wishlist.splice(index,1);
+
+    localStorage.setItem("wishlist",JSON.stringify(wishlist));
+
+    loadWishlist();
+}
+
+function toggleCart(){
+
+    let c=document.getElementById("cartPanel");
+
+    let w=document.getElementById("wishPanel");
+
+    w.style.right="-380px";
+
+    c.style.right = c.style.right==="0px" ? "-380px" : "0px";
+}
+
+function toggleWish(){
+
+    let c=document.getElementById("cartPanel");
+
+    let w=document.getElementById("wishPanel");
+
+    c.style.right="-380px";
+
+    w.style.right = w.style.right==="0px" ? "-380px" : "0px";
+}
+
+function goCheckout(){
+
+    if(cart.length===0){
+        showToast("Cart Is Empty");
+        return;
+    }
+
+    window.location.href="checkout.html";
+}
+
+loadCart();
+loadWishlist();
+
+</script>
+
+</body>
+</html>

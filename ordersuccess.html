@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Order Success - AL NOOR</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#0f0f0f;
+    font-family:'Poppins',sans-serif;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+/* SUCCESS BOX */
+
+.success-box{
+    width:100%;
+    max-width:600px;
+    background:#1a1a1a;
+    padding:50px 35px;
+    border-radius:25px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.5);
+    animation:fadeIn 1s ease;
+}
+
+/* ICON */
+
+.check-circle{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    background:#d4af37;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:60px;
+    color:black;
+    font-weight:bold;
+    animation:pop 0.8s ease;
+}
+
+/* TEXT */
+
+.success-box h1{
+    margin-top:30px;
+    color:#d4af37;
+    font-family:'Cinzel',serif;
+    font-size:42px;
+}
+
+.success-box p{
+    margin-top:18px;
+    color:#ccc;
+    line-height:1.8;
+    font-size:17px;
+}
+
+/* ORDER ID */
+
+.order-id{
+    margin-top:25px;
+    background:#111;
+    padding:18px;
+    border-radius:12px;
+    font-size:20px;
+    color:#d4af37;
+    font-weight:600;
+    border:1px solid #333;
+}
+
+/* BUTTON */
+
+.shop-btn{
+    display:inline-block;
+    margin-top:35px;
+    padding:15px 35px;
+    background:#d4af37;
+    color:black;
+    text-decoration:none;
+    border-radius:12px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.shop-btn:hover{
+    background:white;
+    transform:scale(1.05);
+}
+
+/* ANIMATION */
+
+@keyframes pop{
+
+    0%{
+        transform:scale(0);
+    }
+
+    80%{
+        transform:scale(1.1);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
+
+@keyframes fadeIn{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+    .success-box{
+        padding:40px 20px;
+    }
+
+    .success-box h1{
+        font-size:32px;
+    }
+
+    .check-circle{
+        width:100px;
+        height:100px;
+        font-size:50px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="success-box">
+
+    <div class="check-circle">
+        ✓
+    </div>
+
+    <h1>Order Placed Successfully</h1>
+
+    <p>
+        Thank you for shopping with AL NOOR Jewellery.
+        Your order has been confirmed and will be delivered soon.
+    </p>
+
+    <div class="order-id">
+        Order ID:
+        <span id="orderId"></span>
+    </div>
+
+    <a href="shop.html" class="shop-btn">
+        Continue Shopping
+    </a>
+
+</div>
+
+<script>
+
+/* GET ORDER ID */
+
+let orderId = localStorage.getItem("orderId");
+
+/* SHOW ORDER ID */
+
+if(orderId){
+
+    document.getElementById("orderId").innerText = orderId;
+
+}
+else{
+
+    document.getElementById("orderId").innerText = "ALN000000";
+
+}
+
+</script>
+
+</body>
+</html>
