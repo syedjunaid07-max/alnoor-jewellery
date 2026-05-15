@@ -3,11 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Order Success - AL NOOR</title>
-
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
-
 <style>
 
 *{
@@ -25,29 +22,33 @@ body{
     align-items:center;
     min-height:100vh;
     padding:20px;
+    overflow-x:hidden;
 }
 
-/* SUCCESS BOX */
+body::-webkit-scrollbar{ width:8px; }
+body::-webkit-scrollbar-thumb{ background:#d4af37; border-radius:10px; }
+
+/* ─── SUCCESS BOX ─── */
 
 .success-box{
     width:100%;
     max-width:600px;
     background:#1a1a1a;
-    padding:50px 35px;
+    padding:50px 40px;
     border-radius:25px;
     text-align:center;
     box-shadow:0 10px 30px rgba(0,0,0,0.5);
-    animation:fadeIn 1s ease;
+    animation:fadeIn 0.8s ease;
 }
 
-/* ICON */
+/* ─── CHECK CIRCLE ─── */
 
 .check-circle{
     width:120px;
     height:120px;
     border-radius:50%;
     background:#d4af37;
-    margin:auto;
+    margin:0 auto 30px;
     display:flex;
     justify-content:center;
     align-items:center;
@@ -57,46 +58,50 @@ body{
     animation:pop 0.8s ease;
 }
 
-/* TEXT */
+/* ─── TEXT ─── */
 
 .success-box h1{
-    margin-top:30px;
     color:#d4af37;
     font-family:'Cinzel',serif;
-    font-size:42px;
+    font-size:clamp(26px, 5vw, 42px);
+    line-height:1.2;
+    margin-bottom:18px;
 }
 
 .success-box p{
-    margin-top:18px;
     color:#ccc;
     line-height:1.8;
-    font-size:17px;
+    font-size:clamp(14px, 2vw, 17px);
+    max-width:480px;
+    margin:0 auto;
 }
 
-/* ORDER ID */
+/* ─── ORDER ID ─── */
 
 .order-id{
-    margin-top:25px;
+    margin-top:28px;
     background:#111;
-    padding:18px;
+    padding:18px 20px;
     border-radius:12px;
-    font-size:20px;
+    font-size:clamp(15px, 2.5vw, 20px);
     color:#d4af37;
     font-weight:600;
     border:1px solid #333;
+    word-break:break-all;
 }
 
-/* BUTTON */
+/* ─── BUTTON ─── */
 
 .shop-btn{
     display:inline-block;
     margin-top:35px;
-    padding:15px 35px;
+    padding:15px 40px;
     background:#d4af37;
     color:black;
     text-decoration:none;
     border-radius:12px;
     font-weight:600;
+    font-size:clamp(14px, 2vw, 16px);
     transition:0.3s;
 }
 
@@ -105,48 +110,28 @@ body{
     transform:scale(1.05);
 }
 
-/* ANIMATION */
+/* ─── ANIMATIONS ─── */
 
 @keyframes pop{
-
-    0%{
-        transform:scale(0);
-    }
-
-    80%{
-        transform:scale(1.1);
-    }
-
-    100%{
-        transform:scale(1);
-    }
-
+    0%  { transform:scale(0); }
+    80% { transform:scale(1.1); }
+    100%{ transform:scale(1); }
 }
 
 @keyframes fadeIn{
-
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
+    from{ opacity:0; transform:translateY(30px); }
+    to  { opacity:1; transform:translateY(0); }
 }
 
-/* MOBILE */
+/* ════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+════════════════════════════════ */
 
-@media(max-width:700px){
-
+/* ── Tablet (max 768px) ── */
+@media(max-width:768px){
     .success-box{
-        padding:40px 20px;
-    }
-
-    .success-box h1{
-        font-size:32px;
+        padding:40px 28px;
+        border-radius:20px;
     }
 
     .check-circle{
@@ -155,6 +140,48 @@ body{
         font-size:50px;
     }
 
+    .shop-btn{ padding:14px 32px; }
+}
+
+/* ── Mobile (max 480px) ── */
+@media(max-width:480px){
+    body{ padding:16px; align-items:flex-start; padding-top:40px; }
+
+    .success-box{
+        padding:32px 20px;
+        border-radius:16px;
+    }
+
+    .check-circle{
+        width:88px;
+        height:88px;
+        font-size:44px;
+        margin-bottom:22px;
+    }
+
+    .success-box h1{ font-size:22px; }
+
+    .success-box p{ font-size:13px; }
+
+    .order-id{
+        padding:14px 16px;
+        font-size:14px;
+        margin-top:20px;
+    }
+
+    .shop-btn{
+        margin-top:24px;
+        padding:13px 28px;
+        font-size:14px;
+        border-radius:10px;
+    }
+}
+
+/* ── Very small (max 360px) ── */
+@media(max-width:360px){
+    .success-box{ padding:24px 14px; }
+    .check-circle{ width:76px; height:76px; font-size:38px; }
+    .success-box h1{ font-size:19px; }
 }
 
 </style>
@@ -164,11 +191,9 @@ body{
 
 <div class="success-box">
 
-    <div class="check-circle">
-        ✓
-    </div>
+    <div class="check-circle">✓</div>
 
-    <h1>Order Placed Successfully</h1>
+    <h1>Order Placed Successfully!</h1>
 
     <p>
         Thank you for shopping with AL NOOR Jewellery.
@@ -176,35 +201,16 @@ body{
     </p>
 
     <div class="order-id">
-        Order ID:
-        <span id="orderId"></span>
+        Order ID: <span id="orderId"></span>
     </div>
 
-    <a href="shop.html" class="shop-btn">
-        Continue Shopping
-    </a>
+    <a href="shop.html" class="shop-btn">Continue Shopping</a>
 
 </div>
 
 <script>
-
-/* GET ORDER ID */
-
 let orderId = localStorage.getItem("orderId");
-
-/* SHOW ORDER ID */
-
-if(orderId){
-
-    document.getElementById("orderId").innerText = orderId;
-
-}
-else{
-
-    document.getElementById("orderId").innerText = "ALN000000";
-
-}
-
+document.getElementById("orderId").innerText = orderId || "ALN000000";
 </script>
 
 </body>
