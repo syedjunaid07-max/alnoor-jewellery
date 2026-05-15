@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>About Us - AL NOOR Jewellery</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
@@ -20,10 +19,13 @@ body{
     font-family:'Poppins',sans-serif;
     background:#0f0f0f;
     color:white;
-    padding-top:100px;
+    overflow-x:hidden;
 }
 
-/* HEADER */
+body::-webkit-scrollbar{ width:8px; }
+body::-webkit-scrollbar-thumb{ background:#d4af37; border-radius:10px; }
+
+/* ─── HEADER ─── */
 
 .header{
     position:fixed;
@@ -33,61 +35,91 @@ body{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:18px 40px;
-    background:rgba(0,0,0,0.85);
+    padding:16px 40px;
+    background:rgba(0,0,0,0.92);
     backdrop-filter:blur(10px);
     z-index:1000;
+    border-bottom:1px solid #222;
+    gap:16px;
 }
 
 .left-section{
     display:flex;
     align-items:center;
-    gap:20px;
+    gap:16px;
+    flex-shrink:0;
 }
 
 .menu-icon{
     font-size:24px;
     cursor:pointer;
     color:#d4af37;
+    line-height:1;
 }
 
 .logo{
     font-family:'Cinzel',serif;
-    font-size:30px;
+    font-size:26px;
     color:#d4af37;
     font-weight:700;
+    white-space:nowrap;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:4px;
 }
 
 .nav-links a{
     text-decoration:none;
     color:white;
-    margin-left:20px;
+    padding:6px 12px;
     transition:0.3s;
+    font-weight:500;
+    font-size:15px;
+    white-space:nowrap;
 }
 
-.nav-links a:hover{
-    color:#d4af37;
+.nav-links a:hover{ color:#d4af37; }
+
+.icons{
+    display:flex;
+    align-items:center;
+    gap:4px;
+    flex-shrink:0;
 }
 
 .icons span{
-    margin-left:15px;
     cursor:pointer;
     font-size:18px;
+    padding:6px 10px;
 }
 
-/* SIDEBAR */
+/* ─── SIDEBAR ─── */
 
 .sidebar{
     position:fixed;
-    left:-250px;
+    left:-270px;
     top:0;
-    width:250px;
+    width:260px;
     height:100%;
     background:#111;
     padding-top:70px;
     transition:0.3s;
     z-index:2000;
+    box-shadow:4px 0 20px rgba(0,0,0,0.5);
 }
+
+.sidebar-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.5);
+    z-index:1999;
+}
+
+.sidebar-overlay.active{ display:block; }
 
 .close-sidebar{
     position:absolute;
@@ -101,9 +133,11 @@ body{
 .sidebar a{
     display:block;
     color:white;
-    padding:18px;
+    padding:16px 20px;
     text-decoration:none;
     transition:0.3s;
+    font-size:15px;
+    border-bottom:1px solid #1a1a1a;
 }
 
 .sidebar a:hover{
@@ -111,40 +145,55 @@ body{
     color:black;
 }
 
-/* MAIN */
+/* ─── HERO BANNER ─── */
+
+.hero-banner{
+    min-height:38vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
+        url('https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?q=80&w=1400&auto=format&fit=crop');
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:100px 20px 40px;
+}
+
+.hero-banner h1{
+    font-size:clamp(28px, 5vw, 52px);
+    color:#d4af37;
+    font-family:'Cinzel',serif;
+    margin-bottom:16px;
+    line-height:1.2;
+}
+
+.hero-banner p{
+    font-size:clamp(14px, 1.8vw, 18px);
+    color:#ddd;
+    max-width:700px;
+    line-height:1.8;
+    margin:auto;
+}
+
+/* ─── MAIN CONTAINER ─── */
 
 .container{
-    width:90%;
-    margin:auto;
+    width:92%;
+    max-width:1100px;
+    margin:60px auto 80px;
 }
 
-.page-title{
-    text-align:center;
-    margin-bottom:20px;
-}
-
-.page-title h1{
-    color:#d4af37;
-    font-size:50px;
-    font-family:'Cinzel',serif;
-    margin-bottom:15px;
-}
-
-.page-title p{
-    color:#ccc;
-    max-width:800px;
-    margin:auto;
-    line-height:1.8;
-    font-size:17px;
-}
+/* ─── SECTION ─── */
 
 .section{
-    margin-top:60px;
+    margin-top:55px;
 }
 
 .section h2{
     color:#d4af37;
-    font-size:34px;
+    font-size:clamp(20px, 3vw, 34px);
     font-family:'Cinzel',serif;
     margin-bottom:20px;
     border-bottom:1px solid #333;
@@ -154,97 +203,217 @@ body{
 .section p{
     color:#ddd;
     line-height:1.9;
-    margin-bottom:20px;
-    font-size:16px;
+    margin-bottom:18px;
+    font-size:clamp(14px, 1.5vw, 16px);
 }
 
-/* CARDS */
+/* ─── WHY CHOOSE LIST ─── */
+
+.why-list{
+    list-style:none;
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));
+    gap:14px;
+    margin-top:10px;
+}
+
+.why-list li{
+    background:#1a1a1a;
+    padding:16px 20px;
+    border-radius:12px;
+    border-left:4px solid #d4af37;
+    color:#ddd;
+    font-size:15px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    transition:0.3s;
+}
+
+.why-list li:hover{
+    background:#222;
+    transform:translateX(4px);
+}
+
+.why-list li .tick{
+    color:#d4af37;
+    font-size:18px;
+    flex-shrink:0;
+}
+
+/* ─── JEWELLERY TYPE CARDS ─── */
 
 .types{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:25px;
+    grid-template-columns:repeat(auto-fill, minmax(240px, 1fr));
+    gap:20px;
+    margin-top:10px;
 }
 
 .card{
     background:#1a1a1a;
-    padding:25px;
+    padding:24px 22px;
     border-radius:15px;
     transition:0.4s;
     box-shadow:0 5px 15px rgba(0,0,0,0.4);
+    border-top:3px solid transparent;
 }
 
 .card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 10px 25px rgba(212,175,55,0.3);
+    transform:translateY(-8px);
+    box-shadow:0 10px 25px rgba(212,175,55,0.25);
+    border-top-color:#d4af37;
+}
+
+.card .card-icon{
+    font-size:32px;
+    margin-bottom:12px;
+    display:block;
 }
 
 .card h3{
     color:#d4af37;
-    margin-bottom:15px;
-    font-size:24px;
+    margin-bottom:10px;
+    font-size:clamp(17px, 2vw, 22px);
 }
 
 .card p{
     color:#ccc;
     line-height:1.7;
+    font-size:14px;
+    margin-bottom:0;
 }
 
-/* BACK BUTTON */
+/* ─── BACK BUTTON ─── */
 
 .back{
     display:inline-block;
-    margin-top:40px;
-    margin-bottom:30px;
+    margin-top:50px;
+    margin-bottom:20px;
     text-decoration:none;
     background:#d4af37;
     color:black;
-    padding:12px 25px;
+    padding:12px 28px;
     border-radius:30px;
     font-weight:600;
+    font-size:15px;
     transition:0.3s;
 }
 
 .back:hover{
     background:white;
+    transform:scale(1.03);
 }
 
-/* FOOTER */
+/* ─── FOOTER ─── */
 
 .footer{
     background:black;
     text-align:center;
-    padding:35px 20px;
-    margin-top:80px;
+    padding:36px 20px;
+    margin-top:40px;
     border-top:1px solid #222;
 }
 
 .footer h3{
     color:#d4af37;
-    margin-bottom:12px;
+    margin-bottom:10px;
     font-family:'Cinzel',serif;
-    font-size:28px;
+    font-size:clamp(20px, 3vw, 28px);
 }
 
 .footer p{
     color:#aaa;
-    font-size:15px;
-    margin-bottom:10px;
+    font-size:14px;
+    margin-top:8px;
 }
 
-/* MOBILE */
+/* ════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+════════════════════════════════ */
 
-@media(max-width:900px){
+/* ── Large Tablet (max 1024px) ── */
+@media(max-width:1024px){
+    .header{ padding:14px 24px; }
+    .logo{ font-size:22px; }
+}
+
+/* ── Tablet (max 768px) ── */
+@media(max-width:768px){
 
     .header{
-        flex-direction:column;
-        gap:15px;
+        flex-wrap:wrap;
+        padding:12px 16px;
+        gap:10px;
     }
 
-    .page-title h1{
-        font-size:38px;
+    .logo{ font-size:20px; }
+
+    .nav-links{ display:none; }
+
+    .icons span{ font-size:16px; padding:4px 8px; }
+
+    .hero-banner{ min-height:32vh; padding:90px 16px 30px; }
+
+    .types{
+        grid-template-columns:repeat(2, 1fr);
+        gap:14px;
     }
 
+    .why-list{
+        grid-template-columns:1fr;
+    }
+
+    .container{ margin:40px auto 60px; }
+}
+
+/* ── Mobile (max 480px) ── */
+@media(max-width:480px){
+
+    .header{ padding:10px 14px; }
+
+    .logo{ font-size:18px; }
+
+    .hero-banner{
+        min-height:28vh;
+        padding:80px 14px 28px;
+    }
+
+    .container{
+        width:95%;
+        margin:30px auto 50px;
+    }
+
+    .section{ margin-top:36px; }
+
+    .section h2{ font-size:20px; }
+
+    .section p{ font-size:14px; }
+
+    /* 1-column cards on small phones */
+    .types{
+        grid-template-columns:1fr;
+        gap:14px;
+    }
+
+    .card{ padding:20px 16px; }
+
+    .card .card-icon{ font-size:26px; }
+
+    .card h3{ font-size:18px; }
+
+    .why-list li{ font-size:14px; padding:13px 16px; }
+
+    .back{ padding:11px 22px; font-size:14px; }
+
+    .footer h3{ font-size:20px; }
+}
+
+/* ── Very small (max 360px) ── */
+@media(max-width:360px){
+    .logo{ font-size:16px; }
+    .hero-banner h1{ font-size:24px; }
+    .card h3{ font-size:16px; }
 }
 
 </style>
@@ -252,222 +421,160 @@ body{
 
 <body>
 
-<!-- SIDEBAR -->
+<!-- Sidebar overlay -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMenu()"></div>
 
+<!-- SIDEBAR -->
 <div id="sidebar" class="sidebar">
 
     <div class="close-sidebar" onclick="closeMenu()">✖</div>
 
-    <a href="index.html">Home</a>
-    <a href="shop.html">Shop</a>
-    <a href="About.html">About</a>
-    <a href="login.html">Sign In</a>
+    <a href="index.html">🏠 Home</a>
+    <a href="shop.html">🛍️ Shop</a>
+    <a href="About.html">ℹ️ About</a>
+    <a href="login.html">🔑 Sign In</a>
 
 </div>
 
 <!-- HEADER -->
-
 <div class="header">
 
     <div class="left-section">
-
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
-
         <div class="logo">AL NOOR</div>
-
     </div>
 
     <div class="nav-links">
-
         <a href="index.html">Home</a>
         <a href="shop.html">Shop</a>
         <a href="About.html">About</a>
         <a href="login.html">Sign In</a>
-
     </div>
 
     <div class="icons">
-
-        <span>❤️</span>
-        <span>🛒</span>
-
+        <span onclick="window.location.href='index.html'">❤️</span>
+        <span onclick="window.location.href='shop.html'">🛒</span>
     </div>
 
 </div>
 
-<!-- MAIN -->
+<!-- HERO BANNER -->
+<div class="hero-banner">
+    <div>
+        <h1>About AL NOOR Jewellery</h1>
+        <p>Discover timeless beauty, elegant craftsmanship, and premium jewellery collections designed for every special moment.</p>
+    </div>
+</div>
 
+<!-- MAIN -->
 <div class="container">
 
-    <div class="page-title">
-
-        <h1>About AL NOOR Jewellery</h1>
-
-        <p>
-            Discover timeless beauty, elegant craftsmanship, and premium jewellery collections designed for every special moment.
-        </p>
-
-    </div>
-
     <!-- COMPANY -->
-
     <div class="section">
-
         <h2>Our Company</h2>
-
         <p>
             AL NOOR Jewellery is a premium jewellery brand dedicated to creating elegant, luxurious, and affordable jewellery collections for modern fashion lovers. Our designs combine traditional craftsmanship with contemporary beauty to create timeless jewellery pieces.
         </p>
-
         <p>
             We focus on quality, customer satisfaction, and elegant craftsmanship. Every jewellery piece is designed carefully to provide beauty, confidence, and sophistication for every occasion.
         </p>
-
     </div>
 
     <!-- ABOUT JEWELLERY -->
-
     <div class="section">
-
         <h2>About Jewellery</h2>
-
         <p>
             Jewellery has always represented beauty, culture, tradition, and luxury. From ancient civilizations to modern fashion, jewellery continues to be an important part of celebrations, weddings, and personal style.
         </p>
-
         <p>
             Modern jewellery combines traditional art with stylish contemporary designs using gold, silver, diamonds, pearls, gemstones, and premium materials.
         </p>
-
     </div>
 
     <!-- TYPES -->
-
     <div class="section">
-
         <h2>Types of Jewellery</h2>
 
         <div class="types">
 
             <div class="card">
-
+                <span class="card-icon">📿</span>
                 <h3>Necklaces</h3>
-
-                <p>
-                    Elegant neck jewellery available in chains, chokers, bridal sets, and luxury layered styles.
-                </p>
-
+                <p>Elegant neck jewellery available in chains, chokers, bridal sets, and luxury layered styles.</p>
             </div>
 
             <div class="card">
-
+                <span class="card-icon">✨</span>
                 <h3>Earrings</h3>
-
-                <p>
-                    Stylish earrings including studs, hoops, jhumkas, chandbalis, and modern designer collections.
-                </p>
-
+                <p>Stylish earrings including studs, hoops, jhumkas, chandbalis, and modern designer collections.</p>
             </div>
 
             <div class="card">
-
+                <span class="card-icon">💛</span>
                 <h3>Bracelets</h3>
-
-                <p>
-                    Beautiful wrist accessories designed for daily wear, weddings, and premium fashion styling.
-                </p>
-
+                <p>Beautiful wrist accessories designed for daily wear, weddings, and premium fashion styling.</p>
             </div>
 
             <div class="card">
-
+                <span class="card-icon">🔮</span>
                 <h3>Pendants</h3>
-
-                <p>
-                    Minimal and elegant pendants crafted with modern and traditional artistic designs.
-                </p>
-
+                <p>Minimal and elegant pendants crafted with modern and traditional artistic designs.</p>
             </div>
 
             <div class="card">
-
+                <span class="card-icon">💎</span>
                 <h3>Luxury Collections</h3>
-
-                <p>
-                    Premium jewellery collections crafted with elegant finishing and luxurious materials.
-                </p>
-
+                <p>Premium jewellery collections crafted with elegant finishing and luxurious materials.</p>
             </div>
 
             <div class="card">
-
+                <span class="card-icon">👰</span>
                 <h3>Wedding Jewellery</h3>
-
-                <p>
-                    Bridal jewellery collections designed specially for weddings, celebrations, and grand occasions.
-                </p>
-
+                <p>Bridal jewellery collections designed specially for weddings, celebrations, and grand occasions.</p>
             </div>
 
         </div>
-
     </div>
 
     <!-- WHY CHOOSE -->
-
     <div class="section">
-
         <h2>Why Choose AL NOOR?</h2>
 
-        <p>
-            ✔ Premium Quality Jewellery<br><br>
-
-            ✔ Elegant Traditional & Modern Designs<br><br>
-
-            ✔ Affordable Luxury Collections<br><br>
-
-            ✔ Trusted Customer Service<br><br>
-
-            ✔ Stylish Jewellery For Every Occasion
-        </p>
-
+        <ul class="why-list">
+            <li><span class="tick">✔</span> Premium Quality Jewellery</li>
+            <li><span class="tick">✔</span> Elegant Traditional & Modern Designs</li>
+            <li><span class="tick">✔</span> Affordable Luxury Collections</li>
+            <li><span class="tick">✔</span> Trusted Customer Service</li>
+            <li><span class="tick">✔</span> Stylish Jewellery For Every Occasion</li>
+        </ul>
     </div>
 
-    <a href="home.html" class="back">← Back to Home</a>
+    <a href="index.html" class="back">← Back to Home</a>
 
 </div>
 
 <!-- FOOTER -->
-
 <div class="footer">
-
     <h3>AL NOOR Jewellery</h3>
-
-    <p>
-        Luxury Jewellery | Elegant Designs | Premium Collection
-    </p>
-
-    <p>
-        © 2026 AL NOOR. All Rights Reserved.
-    </p>
-
+    <p>Luxury Jewellery | Elegant Designs | Premium Collection</p>
+    <p>© 2026 AL NOOR. All Rights Reserved.</p>
 </div>
 
 <script>
 
 function toggleMenu(){
-
-    let s=document.getElementById("sidebar");
-
-    s.style.left = s.style.left==="0px" ? "-250px" : "0px";
+    let s  = document.getElementById("sidebar");
+    let ov = document.getElementById("sidebarOverlay");
+    let open = s.style.left === "0px";
+    s.style.left = open ? "-270px" : "0px";
+    ov.classList.toggle("active", !open);
 }
 
 function closeMenu(){
-
-    document.getElementById("sidebar").style.left="-250px";
+    document.getElementById("sidebar").style.left = "-270px";
+    document.getElementById("sidebarOverlay").classList.remove("active");
 }
 
 </script>
-
 </body>
 </html>
