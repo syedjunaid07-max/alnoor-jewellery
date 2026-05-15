@@ -3,173 +3,435 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Product Details - Al Noor</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+<title>Product Details - AL NOOR</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
 <style>
 
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
 }
 
 body{
-    background:#f5f5f5;
+    font-family:'Poppins',sans-serif;
+    background:#0f0f0f;
+    color:white;
+    padding-top:80px;
+    overflow-x:hidden;
 }
 
-/* HEADER */
+body::-webkit-scrollbar{ width:8px; }
+body::-webkit-scrollbar-thumb{ background:#d4af37; border-radius:10px; }
+
+/* ─── HEADER ─── */
 
 .header{
-    background:#111;
-    color:white;
-    padding:18px 40px;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    padding:16px 40px;
+    background:rgba(0,0,0,0.92);
+    backdrop-filter:blur(10px);
+    z-index:1000;
+    border-bottom:1px solid #222;
+    gap:16px;
+}
+
+.left-section{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    flex-shrink:0;
+}
+
+.menu-icon{
+    font-size:24px;
+    cursor:pointer;
+    color:#d4af37;
+    line-height:1;
 }
 
 .logo{
-    font-size:28px;
-    font-weight:600;
+    font-family:'Cinzel',serif;
+    font-size:26px;
+    color:#d4af37;
+    font-weight:700;
+    white-space:nowrap;
 }
 
-.nav a{
-    color:white;
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:4px;
+}
+
+.nav-links a{
     text-decoration:none;
-    margin-left:20px;
+    color:white;
+    padding:6px 12px;
+    transition:0.3s;
+    font-weight:500;
+    font-size:15px;
+    white-space:nowrap;
 }
 
-/* PRODUCT SECTION */
+.nav-links a:hover{ color:#d4af37; }
+
+/* ─── SIDEBAR ─── */
+
+.sidebar{
+    position:fixed;
+    left:-270px;
+    top:0;
+    width:260px;
+    height:100%;
+    background:#111;
+    padding-top:70px;
+    transition:0.3s;
+    z-index:2000;
+    box-shadow:4px 0 20px rgba(0,0,0,0.5);
+}
+
+.sidebar-overlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.5);
+    z-index:1999;
+}
+
+.sidebar-overlay.active{ display:block; }
+
+.close-sidebar{
+    position:absolute;
+    top:15px;
+    right:20px;
+    font-size:22px;
+    color:white;
+    cursor:pointer;
+}
+
+.sidebar a{
+    display:block;
+    color:white;
+    padding:16px 20px;
+    text-decoration:none;
+    transition:0.3s;
+    font-size:15px;
+    border-bottom:1px solid #1a1a1a;
+}
+
+.sidebar a:hover{
+    background:#d4af37;
+    color:black;
+}
+
+/* ─── PRODUCT SECTION ─── */
 
 .product-container{
-    width:90%;
+    width:92%;
+    max-width:1200px;
     margin:40px auto;
     display:flex;
     gap:40px;
-    background:white;
-    padding:30px;
-    border-radius:12px;
-    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    background:#1a1a1a;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.4);
 }
-
-/* IMAGE */
 
 .product-image{
     flex:1;
+    min-width:0;
 }
 
 .product-image img{
     width:100%;
-    border-radius:10px;
-    height:500px;
+    border-radius:15px;
+    height:520px;
     object-fit:cover;
+    transition:0.4s;
+    display:block;
 }
 
-/* DETAILS */
+.product-image img:hover{ transform:scale(1.02); }
 
 .product-details{
     flex:1;
+    min-width:0;
+}
+
+.rating{
+    color:#d4af37;
+    margin-bottom:10px;
+    font-size:20px;
 }
 
 .product-details h1{
     margin-bottom:15px;
-    font-size:34px;
+    font-size:clamp(24px, 3.5vw, 42px);
+    color:#d4af37;
+    font-family:'Cinzel',serif;
+    line-height:1.3;
 }
 
 .price{
     margin:20px 0;
-    font-size:28px;
-    color:#b8962e;
+    font-size:clamp(22px, 3vw, 32px);
+    color:#d4af37;
+    font-weight:600;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:8px;
 }
 
 .old-price{
     text-decoration:line-through;
     color:gray;
-    margin-left:10px;
-    font-size:20px;
+    font-size:clamp(16px, 2vw, 22px);
 }
 
 .discount{
-    color:green;
-    margin-left:10px;
-    font-size:20px;
+    color:#00cc44;
+    font-size:clamp(15px, 1.8vw, 20px);
+    font-weight:600;
 }
 
 .description{
     margin-top:20px;
-    line-height:1.8;
-    color:#555;
+    line-height:1.9;
+    color:#ddd;
+    font-size:clamp(14px, 1.5vw, 17px);
 }
 
 .stock{
     margin-top:20px;
-    color:green;
+    color:#00cc44;
     font-weight:600;
+    font-size:clamp(15px, 1.8vw, 20px);
 }
-
-/* BUTTONS */
 
 .buttons{
     margin-top:30px;
     display:flex;
-    gap:20px;
+    gap:16px;
+    flex-wrap:wrap;
 }
 
-button{
-    padding:14px 30px;
+.cart-btn,
+.buy-btn{
+    padding:14px 28px;
     border:none;
     cursor:pointer;
-    border-radius:8px;
-    font-size:16px;
+    border-radius:10px;
+    font-size:15px;
+    font-weight:600;
+    transition:0.3s;
+    font-family:'Poppins',sans-serif;
+    flex:1;
+    min-width:130px;
 }
 
 .cart-btn{
-    background:#111;
-    color:white;
+    background:white;
+    color:black;
 }
 
 .buy-btn{
-    background:#b8962e;
-    color:white;
+    background:#d4af37;
+    color:black;
 }
 
-button:hover{
-    opacity:0.9;
+.cart-btn:hover,
+.buy-btn:hover{ transform:scale(1.05); }
+
+/* ─── TOAST ─── */
+
+.toast{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#d4af37;
+    color:black;
+    padding:12px 20px;
+    border-radius:10px;
+    font-weight:600;
+    opacity:0;
+    pointer-events:none;
+    transition:0.4s;
+    z-index:5000;
+    font-size:14px;
+    max-width:calc(100vw - 40px);
 }
 
-/* REVIEWS */
+.toast.show{ opacity:1; }
+
+/* ─── REVIEWS ─── */
 
 .review-section{
-    width:90%;
-    margin:30px auto;
-    background:white;
-    padding:25px;
-    border-radius:10px;
+    width:92%;
+    max-width:1200px;
+    margin:30px auto 40px;
+    background:#1a1a1a;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.4);
+}
+
+.review-section h2{
+    color:#d4af37;
+    font-family:'Cinzel',serif;
+    margin-bottom:25px;
+    font-size:clamp(22px, 3vw, 34px);
 }
 
 .review{
     margin-top:20px;
-    padding-bottom:15px;
-    border-bottom:1px solid #ddd;
+    padding-bottom:18px;
+    border-bottom:1px solid #333;
 }
 
 .review h4{
-    margin-bottom:5px;
+    margin-bottom:8px;
+    color:#d4af37;
+    font-size:15px;
 }
 
-@media(max-width:900px){
+.review p{
+    color:#ccc;
+    font-size:14px;
+    line-height:1.7;
+}
 
+/* ─── FOOTER ─── */
+
+.footer{
+    background:black;
+    text-align:center;
+    padding:40px 20px;
+    margin-top:40px;
+    border-top:1px solid #222;
+}
+
+.footer h3{
+    color:#d4af37;
+    margin-bottom:10px;
+    font-family:'Cinzel',serif;
+    font-size:clamp(20px, 3vw, 28px);
+}
+
+.footer p{
+    color:#aaa;
+    font-size:14px;
+    margin-top:8px;
+}
+
+/* ════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+════════════════════════════════ */
+
+/* ── Large Tablet (max 1024px) ── */
+@media(max-width:1024px){
+    .header{ padding:14px 24px; gap:12px; }
+    .logo{ font-size:22px; }
+    .product-container{ gap:28px; padding:28px; }
+    .product-image img{ height:420px; }
+}
+
+/* ── Tablet (max 768px) ── */
+@media(max-width:768px){
+
+    .header{
+        flex-wrap:wrap;
+        padding:12px 16px;
+        gap:10px;
+    }
+
+    .left-section{ gap:12px; flex:1; }
+
+    .logo{ font-size:20px; }
+
+    /* Hide nav links — sidebar takes over */
+    .nav-links{ display:none; }
+
+    /* Stack product layout */
     .product-container{
         flex-direction:column;
+        padding:24px;
+        gap:24px;
     }
 
     .product-image img{
-        height:auto;
+        height:360px;
     }
+
+    .review-section{ padding:24px; }
+}
+
+/* ── Mobile (max 480px) ── */
+@media(max-width:480px){
+
+    body{ padding-top:70px; }
+
+    .header{ padding:10px 14px; gap:8px; }
+
+    .logo{ font-size:18px; }
+
+    .product-container{
+        width:95%;
+        padding:16px;
+        border-radius:14px;
+        margin:24px auto;
+    }
+
+    .product-image img{
+        height:280px;
+        border-radius:10px;
+    }
+
+    .product-details h1{ font-size:22px; }
+
+    .price{ font-size:20px; }
+
+    .description{ font-size:13px; }
+
+    .stock{ font-size:14px; }
+
+    .buttons{
+        gap:12px;
+        margin-top:24px;
+    }
+
+    .cart-btn,
+    .buy-btn{
+        padding:12px 20px;
+        font-size:14px;
+    }
+
+    .review-section{
+        width:95%;
+        padding:16px;
+        border-radius:14px;
+        margin:16px auto 30px;
+    }
+
+    .review-section h2{ font-size:20px; }
+
+    .toast{ bottom:12px; right:12px; left:12px; text-align:center; }
+}
+
+/* ── Very small (max 360px) ── */
+@media(max-width:360px){
+    .logo{ font-size:16px; }
+    .product-image img{ height:230px; }
+    .cart-btn,
+    .buy-btn{ flex:1 1 100%; }
 }
 
 </style>
@@ -177,76 +439,69 @@ button:hover{
 
 <body>
 
+<div class="toast" id="toast"></div>
+
+<!-- Sidebar overlay -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeMenu()"></div>
+
+<!-- SIDEBAR -->
+<div id="sidebar" class="sidebar">
+    <div class="close-sidebar" onclick="closeMenu()">✖</div>
+    <a href="index.html">🏠 Home</a>
+    <a href="shop.html">🛍️ Shop</a>
+    <a href="About.html">ℹ️ About</a>
+    <a href="login.html">🔑 Sign In</a>
+</div>
+
 <!-- HEADER -->
-
 <div class="header">
-
-    <div class="logo">AL NOOR</div>
-
-    <div class="nav">
+    <div class="left-section">
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <div class="logo">AL NOOR</div>
+    </div>
+    <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="shop.html">Shop</a>
         <a href="About.html">About</a>
+        <a href="login.html">Sign In</a>
     </div>
-
 </div>
 
 <!-- PRODUCT DETAILS -->
-
 <div class="product-container">
 
-    <!-- IMAGE -->
-
     <div class="product-image">
-        <img id="productImg" src="">
+        <img id="productImg" src="" alt="Product Image">
     </div>
 
-    <!-- DETAILS -->
-
     <div class="product-details">
-
+        <div class="rating">★★★★★</div>
         <h1 id="productName"></h1>
 
         <div class="price">
             ₹<span id="newPrice"></span>
-
-            <span class="old-price">
-                ₹<span id="oldPrice"></span>
-            </span>
-
+            <span class="old-price">₹<span id="oldPrice"></span></span>
             <span class="discount" id="discount"></span>
         </div>
 
         <div class="description">
             This premium jewellery piece is crafted with elegant design and high-quality materials.
             Perfect for weddings, parties, traditional events, and luxury fashion styling.
-            Al Noor Jewellery provides timeless beauty with modern craftsmanship.
+            AL NOOR Jewellery provides timeless beauty with modern craftsmanship.
         </div>
 
-        <div class="stock">
-            ✔ In Stock
-        </div>
+        <div class="stock">✔ In Stock</div>
 
         <div class="buttons">
-
-            <button class="cart-btn" onclick="addToCart()">
-                Add To Cart
-            </button>
-
-            <button class="buy-btn" onclick="buyNow()">
-                Buy Now
-            </button>
-
+            <button class="cart-btn" onclick="addToCart()">Add To Cart</button>
+            <button class="buy-btn"  onclick="buyNow()">Buy Now</button>
         </div>
-
     </div>
 
 </div>
 
 <!-- REVIEWS -->
-
 <div class="review-section">
-
     <h2>Customer Reviews</h2>
 
     <div class="review">
@@ -263,88 +518,73 @@ button:hover{
         <h4>⭐⭐⭐⭐ Arfa</h4>
         <p>Worth the price. Very elegant jewellery.</p>
     </div>
+</div>
 
+<!-- FOOTER -->
+<div class="footer">
+    <h3>AL NOOR Jewellery</h3>
+    <p>Luxury Jewellery | Elegant Designs | Premium Collection</p>
+    <p>© 2026 AL NOOR. All Rights Reserved.</p>
 </div>
 
 <script>
 
-/* PRODUCTS */
-
-const products = [
-
-{
-    name:"Ruby Choker Set",
-    price:1500,
-    oldPrice:3500,
-    image:"images/Necklace/ruby.jpg"
-},
-
-{
-    name:"Antique Gold Necklace",
-    price:1800,
-    oldPrice:4200,
-    image:"images/Necklace/antique.jpg"
-},
-
-{
-    name:"Polki Bridal Set",
-    price:2600,
-    oldPrice:6000,
-    image:"images/Necklace/polki.jpg"
+/* ── TOAST ── */
+function showToast(message){
+    let toast = document.getElementById("toast");
+    toast.innerText = message;
+    toast.classList.add("show");
+    setTimeout(()=>{ toast.classList.remove("show"); }, 2000);
 }
 
-];
+/* ── SIDEBAR ── */
+function toggleMenu(){
+    let s  = document.getElementById("sidebar");
+    let ov = document.getElementById("sidebarOverlay");
+    let open = s.style.left === "0px";
+    s.style.left = open ? "-270px" : "0px";
+    ov.classList.toggle("active", !open);
+}
 
-/* GET URL */
+function closeMenu(){
+    document.getElementById("sidebar").style.left = "-270px";
+    document.getElementById("sidebarOverlay").classList.remove("active");
+}
 
-let params = new URLSearchParams(window.location.search);
+/* ── LOAD PRODUCT ── */
+let product = JSON.parse(localStorage.getItem("selectedProduct"));
 
-let id = params.get("id");
+if(product){
+    document.getElementById("productName").innerText = product.name;
+    document.getElementById("newPrice").innerText    = product.price;
+    document.getElementById("oldPrice").innerText    = product.oldPrice;
+    document.getElementById("productImg").src        = product.image;
+    document.getElementById("productImg").alt        = product.name;
 
-/* LOAD PRODUCT */
+    let disc = Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100);
+    document.getElementById("discount").innerText = "(" + disc + "% OFF)";
+}else{
+    document.getElementById("productName").innerText = "Product Not Found";
+    document.getElementById("productImg").src        = "images/default.jpg";
+}
 
-let product = products[id];
-
-document.getElementById("productName").innerText = product.name;
-
-document.getElementById("newPrice").innerText = product.price;
-
-document.getElementById("oldPrice").innerText = product.oldPrice;
-
-document.getElementById("productImg").src = product.image;
-
-/* DISCOUNT */
-
-let discount = Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100);
-
-document.getElementById("discount").innerText = "(" + discount + "% OFF)";
-
-/* ADD TO CART */
-
+/* ── ADD TO CART ── */
 function addToCart(){
-
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-    cart.push({
-        name:product.name,
-        price:product.price
-    });
-
-    localStorage.setItem("cart",JSON.stringify(cart));
-
-    alert("Added To Cart");
+    if(!product) return;
+    let cart     = JSON.parse(localStorage.getItem("cart")) || [];
+    let existing = cart.find(item => item.name === product.name);
+    if(existing){ existing.quantity += 1; }
+    else{ cart.push({ name:product.name, price:product.price, quantity:1 }); }
+    localStorage.setItem("cart", JSON.stringify(cart));
+    showToast("Added To Cart ✓");
 }
 
-/* BUY NOW */
-
+/* ── BUY NOW ── */
 function buyNow(){
-
-    alert("Proceeding To Checkout");
-
+    addToCart();
     window.location.href = "checkout.html";
 }
 
 </script>
-
 </body>
 </html>
